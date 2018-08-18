@@ -7,18 +7,18 @@ https://hyperledger.github.io/composer/reference/acl_language.html
 Refer to lecture on Access Control Language
 
 
-#1 Create the BNA archive
+#1 Create the BNA archive  
 composer archive create  --sourceType dir --sourceName ../
 
-#2.1 Install the archive
+#2.1 Install the archive  
 composer network install -a ./airlinev9@0.0.1.bna -c PeerAdmin@hlfv
 
-#2.2 Strart the network
+#2.2 Strart the network  
 composer network start -n airlinev9 -c PeerAdmin@hlfv1 -V 0.0.1 -A admin -S adminpw
 
 admin>> org.hyperledger.composer.system.NetworkAdmin#admin
 
-#3 DO NOT - Import the card
+#3 DO NOT - Import the card  
 composer card delete -n admin@airlinev9
 composer card import -f admin@airlinev9.card
 
