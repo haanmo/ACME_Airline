@@ -1,6 +1,4 @@
-# airline
-
-ACME Airline Case Study
+# ACME Airline Case Study
 
 org.acme.airline
 Airline v9
