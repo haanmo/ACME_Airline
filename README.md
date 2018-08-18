@@ -8,6 +8,7 @@ Refer to lecture on Access Control Language
 
 
 #1 Create the BNA archive
+
 composer archive create  --sourceType dir --sourceName ../
 
 #2.1 Install the archive
