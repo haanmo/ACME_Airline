@@ -2,6 +2,7 @@ namespace org.acme.airline.flight
 import org.acme.airline.aircraft.Aircraft
 
 asset Flight identified by flightId {
+  // try out the Regular expression at http://regex101.com
   o String flightId regex = /[A-Z][A-Z][0-9][0-9][0-9]-(0[1-9]1[0-2])-(0[1-9]|[12]\d|3[01])-[0-9][0-9]/
   o String flightNumberx
   o Route route
@@ -15,6 +16,7 @@ concept Route {
   o DateTime schedule
 }
 
+// Logistics department of ACME creates the flights
 transaction CreateFlight {
   o String flightNumber
   o String origin
@@ -25,3 +27,35 @@ transaction CreateFlight {
 event FlightCreated {
   o String flightId
 }
+
+// Assigns an aircraft to the flight
+// The logistics / validation on availability of aircraft
+// Kept outside of the Blockchain
+transaction AssignAircraft {
+  o String flightId
+  o String aircraftId
+}
+
+// Event indicating that aircraft was assigned
+event AircraftAssigned {
+  o String flightId
+  o String aircraftId
+}
+
+/** Data for testing **
+
+> composer archive create -a dist/airlinev6.bna --sourceType dir --sourceName .
+
+{
+  "$class": "org.acme.airline.flight.Flight",
+  "flightNumber": "AE101-05-26-18",
+  "route": {
+    "$class": "org.acme.airline.flight.Route",
+    "origin": "EWR",
+    "destination": "SEA",
+    "schedule": "2017-10-15T21:44:38.666Z"
+  },
+  "aliasFlightNumber": ["BU456"]
+}
+****/
+

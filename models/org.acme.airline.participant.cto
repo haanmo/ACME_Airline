@@ -12,6 +12,7 @@ concept Contact {
 }
 
 participant ACMENetworkAdmin extends ACMEParticipant {
+   /** This is a concrete resource definition */
 }
 
 participant ACMEPersonnel extends ACMEParticipant {
@@ -19,4 +20,5 @@ participant ACMEPersonnel extends ACMEParticipant {
 }
 
 participant B2BPartner extends ACMEParticipant {
+  /** Additional Attributes */
 }
