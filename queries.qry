@@ -2,6 +2,7 @@
  * All named queries in this file
  **/
 
+/*
  // Returns all flights 
  query AllFlights {
    description: "Returns all flights in the registry"
@@ -15,6 +16,7 @@
       SELECT  org.acme.airline.flight.Flight
   	  WHERE   (flightNumber == _$flight_number)
   } 
+
 
   query FlightsOriginAndDestination {
    description: "Returns all flights in the registry"
@@ -37,3 +39,4 @@
   statement:  
     SELECT  org.acme.airline.aircraft.Aircraft
 }
+*/

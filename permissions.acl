@@ -12,6 +12,15 @@
  * limitations under the License.
  */
 
+// This Rule is needed for all Participants
+rule AcmeNetworkAdminPermissionSystem {
+  description: "can READ the system registries"
+  participant: "ANY"
+  operation: READ
+  resource: "org.hyperledger.composer.system.**"
+  action: ALLOW  
+}
+
 rule NetworkAdminUser {
     description: "Grant business network administrators full access to user resources"
     participant: "org.hyperledger.composer.system.NetworkAdmin"
