@@ -19,8 +19,8 @@ composer network start -n airline -c PeerAdmin@hlfv1 -V 0.0.1 -A admin -S adminp
 admin>> org.hyperledger.composer.system.NetworkAdmin#admin
 
 #3 DO NOT - Import the card  
-composer card delete -n admin@airlinev  
-composer card import -f admin@airlinev.card
+composer card delete -n admin@airline  
+composer card import -f admin@airline.card
 
 #4 Add a new participants
 
