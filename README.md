@@ -11,39 +11,39 @@ Refer to lecture on Access Control Language
 composer archive create  --sourceType dir --sourceName ../
 
 #2.1 Install the archive  
-composer network install -a ./airlinev9@0.0.1.bna -c PeerAdmin@hlfv
+composer network install -a ./airlinev@0.0.1.bna -c PeerAdmin@hlfv1
 
 #2.2 Strart the network  
-composer network start -n airlinev9 -c PeerAdmin@hlfv1 -V 0.0.1 -A admin -S adminpw
+composer network start -n airlinev -c PeerAdmin@hlfv1 -V 0.0.1 -A admin -S adminpw
 
 admin>> org.hyperledger.composer.system.NetworkAdmin#admin
 
 #3 DO NOT - Import the card  
-composer card delete -n admin@airlinev9
-composer card import -f admin@airlinev9.card
+composer card delete -n admin@airlinev  
+composer card import -f admin@airlinev.card
 
 #4 Add a new participants
 
 - John Doe (johnd) is the Network Administrator  
-composer participant add -d '{"$class":"org.acme.airline.participant.ACMENetworkAdmin","participantKey":"johnd","contact":{"$class":"org.acme.airline.participant.Contact","fName":"John","lname":"Doe","email":"john.doe@acmeairline.com"}}' -c admin@airlinev9
+composer participant add -d '{"$class":"org.acme.airline.participant.ACMENetworkAdmin","participantKey":"johnd","contact":{"$class":"org.acme.airline.participant.Contact","fname":"John","lname":"Doe","email":"john.doe@acmeairline.com"}}' -c admin@airline
 
 - Will Smith (wills) works in the Logistics department  
-composer participant add -d '{"$class":"org.acme.airline.participant.ACMEPersonnel","participantKey":"wills","contact":{"$class":"org.acme.airline.participant.Contact","fName":"Will","lname":"Smith","email":"will.smith@acmeairline.com"}, "department":"Logistics"}' -c admin@airlinev9
+composer participant add -d '{"$class":"org.acme.airline.participant.ACMEPersonnel","participantKey":"wills","contact":{"$class":"org.acme.airline.participant.Contact","fname":"Will","lname":"Smith","email":"will.smith@acmeairline.com"}, "department":"Logistics"}' -c admin@airline
 
 #5 Issue the identities  
-composer identity issue -u johnd -a org.acme.airline.participant.ACMENetworkAdmin#johnd -c admin@airlinev9
+composer identity issue -u johnd -a org.acme.airline.participant.ACMENetworkAdmin#johnd -c admin@airline
 
-composer card delete -n johnd@airlinev9  
-composer card import -f johnd@airlinev9.card
+composer card delete -n johnd@airlinev  
+composer card import -f johnd@airlinev.card
 
-composer identity issue -u wills -a org.acme.airline.participant.ACMEPersonnel#wills -c admin@airlinev9 
+composer identity issue -u wills -a org.acme.airline.participant.ACMEPersonnel#wills -c admin@airline 
 
-composer card delete -n wills@airlinev9  
-composer card import -f wills@airlinev9.card
+composer card delete -n wills@airlinev  
+composer card import -f wills@airlinev.card
 
 #6 Ping BNA using the johnd & wills cards  
-    - composer network ping -c johnd@airlinev9  
-    - composer network ping -c wills@airlinev9
+    - composer network ping -c johnd@airline  
+    - composer network ping -c wills@airline
 
 #6 Setup the permissions.acl  
     - johnd     Is the Network Administrator for airlinev9  
@@ -56,10 +56,10 @@ composer card import -f wills@airlinev9.card
 composer archive create  --sourceType dir --sourceName ../
 
 #8 Update the Network  
-composer network update -a ./airlinev9@0.0.1.bna -c admin@airlinev9
+composer network update -a ./airline@0.0.1.bna -c admin@airline
 
 
-composer-rest-server -c johnd@airlinev9 -n always -w true
+composer-rest-server -c johnd@airline -n always -w true
 
 Solutions  
 =========  
