@@ -33,12 +33,12 @@ composer participant add -d '{"$class":"org.acme.airline.participant.ACMEPersonn
 #5 Issue the identities  
 composer identity issue -u johnd -a org.acme.airline.participant.ACMENetworkAdmin#johnd -c admin@airline
 
-composer card delete -n johnd@airline  
+composer card delete -c johnd@airline  
 composer card import -f johnd@airline.card
 
 composer identity issue -u wills -a org.acme.airline.participant.ACMEPersonnel#wills -c admin@airline 
 
-composer card delete -n wills@airline  
+composer card delete -c wills@airline  
 composer card import -f wills@airline.card
 
 #6 Ping BNA using the johnd & wills cards  
