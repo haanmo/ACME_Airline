@@ -11,10 +11,10 @@ Refer to lecture on Access Control Language
 composer archive create  --sourceType dir --sourceName ../
 
 #2.1 Install the archive  
-composer network install -a ./airlinev@0.0.1.bna -c PeerAdmin@hlfv1
+composer network install -a ./airline@0.0.1.bna -c PeerAdmin@hlfv1
 
 #2.2 Strart the network  
-composer network start -n airlinev -c PeerAdmin@hlfv1 -V 0.0.1 -A admin -S adminpw
+composer network start -n airline -c PeerAdmin@hlfv1 -V 0.0.1 -A admin -S adminpw
 
 admin>> org.hyperledger.composer.system.NetworkAdmin#admin
 
