@@ -1,3 +1,8 @@
+
+# clear all .card and .bna
+rm *.card
+rm *.bna
+
 # Create the archive
 composer archive create  --sourceType dir --sourceName ../
 
@@ -8,4 +13,5 @@ composer network install -a ./airline@0.0.1.bna -c PeerAdmin@hlfv1
 composer network start -n airline -c PeerAdmin@hlfv1 -V 0.0.1 -A admin -S adminpw
 
 # Use the card generated
+composer card delete -c admin@airline
 composer card import -f admin@airline.card
