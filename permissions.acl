@@ -74,9 +74,9 @@ rule ParticipantRegistryControlPermission {
 
 rule ACMENetworkAdminUser {
     description: "For executing airlinev9"
-    participant: "**"
+    participant: "ANY"
     operation: ALL
-    resource: "**"
+    resource: "org.hyperledger.composer.system.**"
     action: ALLOW
 }
 
