@@ -33,7 +33,7 @@ rule ParticipantRegistryControlPermission {
 //    READ operations on ACME resources 
 //    READ the system resources  
 //    Participant: "org.acme.airline.participant.ACMENetworkAdmin"
-///********* Exercise Solution **
+/********* Exercise Solution **
 rule AcmeNetworkAdminPermissionAcme {
   description: "can READ the resource registries"
   participant: "org.acme.airline.participant.ACMEParticipant"
@@ -41,7 +41,7 @@ rule AcmeNetworkAdminPermissionAcme {
   resource: "org.acme.airline.**"
   action: ALLOW
 }
-//***************************/
+***************************/
 // #3 Rules for ACMEPersonnel
 
 // #3.1 Needed for ACME Participants to be able to execute transactions
@@ -56,7 +56,6 @@ rule AcmeParticipantPermissionHistorian {
 
 // #3.2 Needed for Creating the "CreateFlight" transaction
 // Only employees @ ACME can execute this transaction
-/*
 rule ACMEPersonnelPermission {
   description: "only ACME personnel can create a flight"
   participant: "org.acme.airline.participant.ACMEPersonnel"
@@ -65,14 +64,13 @@ rule ACMEPersonnelPermission {
   transaction: "org.acme.airline.flight.CreateFlight"
   action: ALLOW
 }
-*/
 
 // This is an example of recursive access to the resource
 // This rule will work the same way as the one above but
 // It gives the transaction access to both Flight & Aircraft
 // To try it out simply UNCOMMENT statements below & COMMENT 
 // the rule above
-///****
+/****
 rule ACMEPersonnelPermission {
   description: "only ACME personnel can create a flight"
   participant: "org.acme.airline.participant.ACMEPersonnel"
@@ -81,7 +79,7 @@ rule ACMEPersonnelPermission {
   transaction: "org.acme.airline.flight.CreateFlight"
   action: ALLOW
 }
-//****/
+****/
 
 
 
