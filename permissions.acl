@@ -13,15 +13,16 @@
  */
 
 /*
-// This Rule is needed for all Participants
-rule AcmeNetworkAdminPermissionSystem {
-  description: "can READ the system registries"
-  participant: "ANY"
-  operation: READ
-  resource: "org.hyperledger.composer.system.**"
-  action: ALLOW  
-}
+1. how to check conflicts among rules?
+  Isn't 1 and 3 conflict?
 
+2. difference between * and **?
+  ** is recursive. What does it mean recursive in this context?
+
+*/
+
+
+// 1. Default.
 rule NetworkAdminUser {
     description: "Grant business network administrators full access to user resources"
     participant: "org.hyperledger.composer.system.NetworkAdmin"
@@ -30,6 +31,7 @@ rule NetworkAdminUser {
     action: ALLOW
 }
 
+// 2. Default.
 rule NetworkAdminSystem {
     description: "Grant business network administrators full access to system resources"
     participant: "org.hyperledger.composer.system.NetworkAdmin"
@@ -37,9 +39,8 @@ rule NetworkAdminSystem {
     resource: "org.hyperledger.composer.system.**"
     action: ALLOW
 }
-*/
-////////////////
 
+// 3
 // This Rule is needed for all Participants
 rule AcmeNetworkAdminPermissionSystem {
   description: "can READ the system registries"
@@ -49,15 +50,18 @@ rule AcmeNetworkAdminPermissionSystem {
   action: ALLOW  
 }
 
-// #1 Allow the 'System Network Admin' to carry out Identities management
-//    and Network operations
+// 4
+// #1 Allow the 'System Network Admin' to carry out Identities management and Network operations
 rule NetworkControlPermission {
   description:  "give admin ALL access to system resources"
   participant: "org.hyperledger.composer.system.NetworkAdmin"
   operation: ALL
-  resource: "org.hyperledger.composer.system.*"
+  resource: "org.hyperledger.composer.system.**"
   action: ALLOW  
 }
+
+
+// 5
 rule ParticipantRegistryControlPermission {
   description:  "give admin ALL access to ACME participant types"
   participant: "org.hyperledger.composer.system.NetworkAdmin"
@@ -68,6 +72,15 @@ rule ParticipantRegistryControlPermission {
 
 
 
+rule ACMENetworkAdminUser {
+    description: "For executing airlinev9"
+    participant: "**"
+    operation: ALL
+    resource: "**"
+    action: ALLOW
+}
+
+
 // #2 Exercise Solution
 // ====================
 // UN-COMMENT the RULES To Test
@@ -75,7 +88,7 @@ rule ParticipantRegistryControlPermission {
 //    READ operations on ACME resources 
 //    READ the system resources  
 //    Participant: "org.acme.airline.participant.ACMENetworkAdmin"
-/********* Exercise Solution **
+///********* Exercise Solution **
 rule AcmeNetworkAdminPermissionAcme {
   description: "can READ the resource registries"
   participant: "org.acme.airline.participant.ACMEParticipant"
@@ -83,7 +96,7 @@ rule AcmeNetworkAdminPermissionAcme {
   resource: "org.acme.airline.**"
   action: ALLOW
 }
-***************************/
+//***************************/
 // #3 Rules for ACMEPersonnel
 
 // #3.1 Needed for ACME Participants to be able to execute transactions
